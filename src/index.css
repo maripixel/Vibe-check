@@ -1,0 +1,145 @@
+:root {
+  --font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  --bg-color: #0f0c29;
+  /* Deep cosmic indigo */
+  --text-color: #f0f0f0;
+  /* Soft white for readability */
+  --accent-color: #b249f8;
+  /* Electric Purple */
+  --gold-color: #ffd700;
+  /* Stardust Gold */
+  --panel-bg: rgba(255, 255, 255, 0.08);
+  --success-color: #4ade80;
+  --error-color: #f87171;
+}
+
+html {
+  background-color: #0f0c29;
+  /* Matches the deep cosmic base to prevent white flashes on scroll/load */
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  background-color: var(--bg-color);
+  /* Deep Cosmic Indigo base */
+  background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+  /* Moved gradient to body */
+  background-attachment: fixed;
+  /* Ensures background stays fixed during scroll, preventing cut-off */
+  color: var(--text-color);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Starry Background Animation */
+@keyframes move-twink-back {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: -10000px 5000px;
+  }
+}
+
+@keyframes move-clouds-back {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 10000px 0;
+  }
+}
+
+.stars,
+.twinkling {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: none;
+}
+
+/* CSS-generated Stars to replace broken images */
+.stars {
+  background: transparent;
+  z-index: 0;
+  overflow: hidden;
+}
+
+/* Creating stars using multiple radial gradients */
+/* Performance Optimized Stars */
+
+/* Static Stars Layer */
+.stars::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Multiple small white/transparent stops to create stars */
+  background-image:
+    radial-gradient(1px 1px at 10% 20%, white, transparent),
+    radial-gradient(1px 1px at 20% 80%, white, transparent),
+    radial-gradient(2px 2px at 30% 40%, white, transparent),
+    radial-gradient(1px 1px at 40% 70%, white, transparent),
+    radial-gradient(2px 2px at 50% 10%, white, transparent),
+    radial-gradient(1px 1px at 60% 60%, white, transparent),
+    radial-gradient(2px 2px at 70% 30%, white, transparent),
+    radial-gradient(1px 1px at 80% 90%, white, transparent),
+    radial-gradient(1px 1px at 90% 50%, white, transparent),
+    radial-gradient(1px 1px at 15% 15%, white, transparent),
+    radial-gradient(1px 1px at 85% 85%, white, transparent);
+  background-size: 550px 550px;
+  opacity: 0.8;
+  will-change: transform;
+}
+
+/* Twinkling via Opacity (Cheaper than moving background) */
+.twinkling::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    radial-gradient(2px 2px at 25% 25%, white, transparent),
+    radial-gradient(2px 2px at 75% 75%, white, transparent),
+    radial-gradient(1px 1px at 50% 50%, white, transparent);
+  background-size: 350px 350px;
+  animation: twinkle-pulse 2s ease-in-out infinite alternate;
+  /* Faster (2s) and alternating for smoother pulse */
+  will-change: opacity;
+}
+
+@keyframes twinkle-pulse {
+  0% {
+    opacity: 0.3;
+    /* Static size, just dimmer */
+  }
+
+  100% {
+    opacity: 1;
+    /* Static size, just brighter */
+  }
+}
+
+/* Removed the heavy move-twink-back animation */
+
+button {
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+button:active {
+  transform: scale(0.98);
+}

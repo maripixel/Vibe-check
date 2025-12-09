@@ -1,0 +1,847 @@
+/* Global Input Styles to Fix Icons */
+input,
+select,
+textarea {
+    color-scheme: dark;
+    /* Forces browser UI (calendar/time-picker) to be dark-mode friendly (light icons) */
+}
+
+.app-container {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 40px 20px;
+    /* Removed solid gradient so stars from index.css show through */
+    background: transparent;
+}
+
+.content {
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    position: relative;
+    z-index: 10;
+}
+
+.title {
+    font-size: 3.5rem;
+    margin-bottom: 0.5rem;
+    /* Simplified Single Color: Starlight White/Silver */
+    background: none;
+    -webkit-background-clip: border-box;
+    -webkit-text-fill-color: initial;
+    color: #e2e8f0;
+    /* Soft silvery white */
+    text-shadow: 0 0 20px rgba(226, 232, 240, 0.6), 0 0 10px rgba(157, 80, 187, 0.4);
+}
+
+.subtitle {
+    font-size: 1.25rem;
+    color: var(--text-color);
+    margin-bottom: 3rem;
+    font-style: italic;
+    opacity: 0.9;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.card {
+    background: rgba(15, 12, 41, 0.6);
+    /* Slightly darker/more opaque for readability over stars */
+    backdrop-filter: blur(16px);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 2rem;
+    animation: fadeIn 0.8s ease-out;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #fff;
+    /* Electric Indigo Gradient - Deep & Premium */
+    background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+    margin-top: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(168, 85, 247, 0.6);
+    background: linear-gradient(135deg, #818cf8 0%, #c084fc 100%);
+}
+
+/* Results Container */
+/* Results Container */
+.results-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+}
+
+.result-card {
+    background: rgba(15, 12, 41, 0.75);
+    /* Highly opaque tint to reduce need for expensive blur */
+    backdrop-filter: blur(8px);
+    /* Reduced from 16px for better scroll performance */
+    -webkit-backdrop-filter: blur(8px);
+    /* Safari support */
+    padding: 2rem;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    /* Simplified shadow */
+    text-align: left;
+    transform: translateZ(0);
+    /* Force GPU layer */
+}
+
+/* Specific Card Accents via Border/Box-Shadow only (Performance + Aesthetic) */
+.natal-card {
+    border-top: 1px solid rgba(255, 215, 0, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 15px rgba(255, 215, 0, 0.1);
+    /* Gold Glow */
+    background: rgba(15, 12, 41, 0.75);
+    /* Slight opacity boost for readability */
+}
+
+.transit-card {
+    border-top: 1px solid rgba(178, 73, 248, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 15px rgba(178, 73, 248, 0.1);
+    /* Purple Glow */
+    background: rgba(15, 12, 41, 0.75);
+}
+
+.result-card .subtitle {
+    /* Changed to target subtitle within result-card to avoid conflict */
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+}
+
+/* Natal Grid */
+.natal-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+.natal-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    /* Lighter, no blur needed here as parent has it */
+    padding: 1.2rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: transform 0.2s, background 0.2s;
+}
+
+.natal-item:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.08);
+    /* Removed heavy shadows/blur changes on hover for performance */
+}
+
+.planet-icon {
+    font-size: 2.2rem;
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3));
+}
+
+.natal-item strong {
+    display: block;
+    font-size: 1.15rem;
+    color: var(--gold-color);
+    margin-bottom: 0.8rem;
+    /* Increased from 0.3rem for better separation */
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+}
+
+/* Transit Section */
+.transits-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.transit-item {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1.2rem;
+    border-radius: 12px;
+    border-left: 4px solid var(--accent-color);
+}
+
+.transit-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.transit-icon {
+    font-size: 1.8rem;
+}
+
+/* --- Daily Summary Card --- */
+.daily-summary-card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    padding: 1.5rem;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    margin-bottom: 2rem;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.daily-summary-card h3 {
+    margin-top: 0;
+    color: var(--gold-color);
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+}
+
+.summary-text {
+    font-size: 1.1rem;
+    font-style: italic;
+    line-height: 1.6;
+    color: var(--text-color);
+    opacity: 0.95;
+}
+
+/* --- Deep Transit Card --- */
+.transit-deep-card {
+    background: rgba(15, 12, 41, 0.5);
+    /* Darker for deep cards */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.deep-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 0.5rem;
+}
+
+.deep-icon {
+    font-size: 2rem;
+}
+
+.deep-title-group h4 {
+    margin: 0;
+    font-size: 1.25rem;
+    text-transform: capitalize;
+    color: #aeecff;
+    /* Ice blue for transit titles */
+    text-shadow: 0 0 10px rgba(174, 236, 255, 0.4);
+}
+
+.deep-duration {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.deep-section {
+    margin-bottom: 1rem;
+}
+
+.deep-section h5 {
+    margin: 0 0 0.3rem 0;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #ffd700;
+    opacity: 0.8;
+}
+
+.deep-section p {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.summary-section .deep-highlight {
+    font-weight: 600;
+    color: #fff;
+    font-size: 1.05rem;
+}
+
+.action-section {
+    background: rgba(255, 215, 0, 0.05);
+    padding: 1rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    margin-top: 1rem;
+}
+
+.tip-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-top: 0.5rem;
+}
+
+.tip-item {
+    display: flex;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 0.6rem 0.8rem;
+    border-radius: 8px;
+}
+
+.tip-label {
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    margin-bottom: 0.2rem;
+    opacity: 0.9;
+    font-weight: 700;
+}
+
+.tip-label.do {
+    color: #4ade80;
+}
+
+.tip-label.dont {
+    color: #f87171;
+}
+
+.self-care .tip-label {
+    color: #c084fc;
+}
+
+.tip-item span:last-child {
+    font-size: 0.95rem;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+/* LIFE AREAS */
+.areas-section {
+    margin-top: 1rem;
+    padding-top: 0.5rem;
+}
+
+.areas-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+    margin-top: 0.5rem;
+}
+
+.area-item {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1rem;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.area-item.love {
+    border-color: rgba(244, 63, 94, 0.3);
+    background: linear-gradient(135deg, rgba(244, 63, 94, 0.05), rgba(0, 0, 0, 0));
+}
+
+.area-item.career {
+    border-color: rgba(59, 130, 246, 0.3);
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(0, 0, 0, 0));
+}
+
+.area-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 700;
+    opacity: 0.9;
+}
+
+.area-item.love .area-label {
+    color: #f43f5e;
+}
+
+.area-item.career .area-label {
+    color: #60a5fa;
+}
+
+.area-item p {
+    font-size: 0.9rem;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+}
+
+.impact-section {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1rem;
+    border-radius: 8px;
+    border-left: 3px solid #ffd700;
+}
+
+.transit-title-group h4 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #fff;
+}
+
+.transit-desc {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 0.8rem;
+    white-space: pre-wrap;
+    /* Allows newlines for Action/Do/Don't section */
+}
+
+.transit-duration {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.6);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Category Pills */
+.category-pill {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-top: 0.3rem;
+    display: inline-block;
+}
+
+/* Category Colors */
+.cat-career,
+.cat-drive {
+    background: rgba(100, 200, 255, 0.2);
+    color: #8ed6ff;
+    border: 1px solid #8ed6ff;
+}
+
+.cat-love {
+    background: rgba(255, 150, 200, 0.2);
+    color: #ffb6c1;
+    border: 1px solid #ffb6c1;
+}
+
+.cat-growth,
+.cat-identity {
+    background: rgba(255, 220, 100, 0.2);
+    color: #ffe066;
+    border: 1px solid #ffe066;
+}
+
+.cat-self,
+.cat-home {
+    background: rgba(150, 255, 180, 0.2);
+    color: #98ff98;
+    border: 1px solid #98ff98;
+}
+
+.cat-general,
+.cat-calm {
+    background: rgba(200, 200, 200, 0.2);
+    color: #e0e0e0;
+    border: 1px solid #e0e0e0;
+}
+
+/* Actions */
+.reset-btn {
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: fit-content;
+    margin: 1rem auto;
+}
+
+.reset-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.6);
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.result-card h2 {
+    color: #ffd700;
+}
+
+.reading-text {
+    text-align: left;
+    line-height: 1.6;
+    margin: 20px 0;
+}
+
+.back-btn {
+    background: transparent;
+    border: 1px solid #ffd700;
+    color: #ffd700;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 1rem;
+    margin-top: 20px;
+}
+
+.back-btn:hover {
+    background: rgba(255, 215, 0, 0.1);
+}
+
+.email-card {
+    text-align: center;
+    margin-top: 1rem;
+    /* Added from new code */
+    padding: 1.5rem;
+    /* Added from new code */
+}
+
+.email-input-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    /* Original was 15px, new was 10px. Keeping original for consistency unless specified */
+}
+
+.email-input-group input {
+    flex: 1;
+    padding: 10px;
+    border-radius: 20px;
+    /* Original was 20px, new was 8px. Keeping original for consistency unless specified */
+    border: none;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.email-input-group button {
+    background: #6b3fa0;
+    /* Original was #6b3fa0, new was #6e48aa. Keeping original for consistency unless specified */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    /* Original was 20px, new was 8px. Keeping original for consistency unless specified */
+    font-weight: bold;
+    cursor: pointer;
+    /* Added from new code */
+}
+
+.email-input-group button:hover {
+    background: #804fb3;
+    box-shadow: 0 0 15px rgba(107, 63, 160, 0.6);
+}
+
+.status-msg {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #ffd700;
+}
+
+/* Navigation Tabs */
+/* Navigation Tabs */
+.nav-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    background: rgba(15, 12, 41, 0.8);
+    /* Darker background, less reliance on blur */
+    backdrop-filter: blur(8px);
+    /* Reduced blur */
+    -webkit-backdrop-filter: blur(8px);
+    padding: 0.5rem;
+    border-radius: 50px;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.tab-btn {
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 40px;
+    transition: all 0.3s ease;
+    font-family: inherit;
+    font-weight: 600;
+}
+
+.tab-btn:hover {
+    color: white;
+}
+
+.tab-btn.active {
+    background: linear-gradient(135deg, #6366f1, #a855f7);
+    color: white;
+    box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+}
+
+/* Animations */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-slide-up {
+    animation: slideUp 0.4s ease-out forwards;
+}
+
+/* Visual Chart */
+.chart-visual-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem 0;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.2);
+    /* Darker circle background */
+    border-radius: 50%;
+    width: 400px;
+    height: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.chart-visual-container svg {
+    overflow: visible;
+}
+
+/* Chart Education */
+.chart-education {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: rgba(255, 215, 0, 0.05);
+    /* Gold tint */
+    border-radius: 12px;
+    border-left: 3px solid #ffd700;
+}
+
+.chart-education h4 {
+    margin-top: 0;
+    color: #ffd700;
+}
+
+.chart-education p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 0.8rem;
+}
+
+
+/* Formatting Helpers */
+.formatted-line {
+    margin-bottom: 1rem;
+    /* Adds breathing room between paragraphs */
+}
+
+.formatted-line:last-child {
+    margin-bottom: 0;
+}
+
+/* Placements Section */
+.placements-section {
+    margin-top: 2rem;
+}
+
+.section-blurb {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 2rem;
+    font-style: italic;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    border-left: 3px solid #6366f1;
+}
+
+.placements-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.placement-item {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(5px);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.placement-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.accordion-header {
+    padding: 1.2rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+.accordion-header strong {
+    display: block;
+    font-size: 1.15rem;
+    color: #e0e7ff;
+    /* Soft lighter purple/white */
+    margin-bottom: 0.3rem;
+    letter-spacing: 0.5px;
+}
+
+.accordion-header .placement-house {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+.accordion-icon {
+    font-size: 1.5rem;
+    color: rgba(255, 255, 255, 0.6);
+    transition: transform 0.3s ease;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.placement-item.open .accordion-header {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.placement-item.open .accordion-icon {
+    transform: rotate(180deg);
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+}
+
+.accordion-body {
+    padding: 0 1.5rem 1.5rem 1.5rem;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+.accordion-body strong {
+    color: var(--gold-color);
+    font-weight: 600;
+}
+
+.animate-slide-down {
+    animation: slideDown 0.3s ease-out forwards;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Aspects Section */
+.aspects-section {
+    margin-top: 2rem;
+}
+
+.aspects-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-top: 1rem;
+}
+
+.aspect-item {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    border-left: 3px solid #f472b6;
+    /* Pink for connection */
+    border-radius: 4px;
+}
+
+.aspect-item strong {
+    color: #f472b6;
+    display: block;
+    margin-bottom: 0.3rem;
+}
+
+.aspect-item p {
+    font-size: 0.9rem;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.chart-caption {
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    opacity: 0.7;
+    text-align: center;
+}
