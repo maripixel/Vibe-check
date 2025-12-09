@@ -166,8 +166,8 @@ textarea {
     display: block;
     font-size: 1.15rem;
     color: var(--gold-color);
-    margin-bottom: 0.8rem;
-    /* Increased from 0.3rem for better separation */
+    margin-bottom: 0.4rem;
+    /* Reduced for tighter spacing between title and content */
     text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
 }
 

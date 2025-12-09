@@ -323,8 +323,11 @@ export const calculateHoroscope = (birthData) => {
             const def = definitions[planetName.toLowerCase()] || `${capitalizedPlanet} represents a key part of your psyche.`;
             const houseInfo = getHouseMeaning(planetName, hNum);
 
-            // THE FINAL STRING: Definition + House + Sign Analysis (Joined by double newline for spacing)
-            return `${def} ${houseInfo}\n\n${signAnalysis}`;
+            // THE FINAL STRING: Definition + House + Sign Analysis
+            // Use single newline for Big Three (tighter spacing), double newline for planetary cards
+            const isBigThree = ['sun', 'moon', 'rising'].includes(planetName.toLowerCase());
+            const separator = isBigThree ? '\n' : '\n\n';
+            return `${def} ${houseInfo}${separator}${signAnalysis}`;
         };
 
         // Helper: Calculate Natal Aspects (Refined)
